@@ -68,14 +68,14 @@ $wgWBClientSettings['repositories'] = [
 $wgWBClientSettings['siteGlobalID'] = $wgDBname;
 $wgWBClientSettings['repoScriptPath'] = '/w';
 $wgWBClientSettings['repoArticlePath'] = '/wiki/$1';
-$wgWBClientSettings['siteGroup'] = 'wikivy';
+$wgWBClientSettings['siteGroup'] = 'wikishack';
 $wgWBClientSettings['repoNamespaces'] = [
 	'wikibase-item' => 'Item',
 	'wikibase-property' => 'Property'
 ];
 
 $wgWBClientSettings['siteLinksGroups'] = [
-	'wikivy'
+	'wikishack'
 ];
 
 $wgWBClientSettings['purgeCacheBatchSize'] = 100;

@@ -9,7 +9,7 @@ use MediaWiki\Title\Title;
 define( 'MW_ENTRY_POINT', 'index' );
 
 require_once '/srv/mediawiki/config/initialise/WikivyFunctions.php';
-require WikivyFunctions::getMediaWiki( 'includes/WebStart.php' );
+require WikiShackFunctions::getMediaWiki( 'includes/WebStart.php' );
 
 // Normalize request URI
 $requestUri = $_SERVER['REQUEST_URI'] ?? '';
@@ -61,7 +61,7 @@ if ( $mainPageRoot && $requestUri !== '/' && $requestMethod !== 'POST' ) {
 	unset( $title );
 }
 
-require_once WikivyFunctions::getMediaWiki( 'includes/PHPVersionCheck.php' );
+require_once WikiShackFunctions::getMediaWiki( 'includes/PHPVersionCheck.php' );
 wfEntryPointCheck( 'html', dirname( $_SERVER['SCRIPT_NAME'] ?? '' ) );
 
 ( new ActionEntryPoint(

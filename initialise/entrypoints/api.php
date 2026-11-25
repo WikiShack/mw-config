@@ -1,3 +1,3 @@
 <?php
 require_once '/srv/mediawiki/config/initialise/WikivyFunctions.php';
-require WikivyFunctions::getMediaWiki( 'api.php' );
+require WikiShackFunctions::getMediaWiki( 'api.php' );

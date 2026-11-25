@@ -12,10 +12,10 @@ if ( strpos( wfHostname(), 'test' ) === 0 ) {
 		'sectionsByDB' => $wi->wikiDBClusters,
 		'sectionLoads' => [
 			'DEFAULT' => [
-				'db01' => 0,
+				'us-central-db01' => 0,
 			],
 			'c1' => [
-				'db01' => 0,
+				'us-central-db01' => 0,
 			],
 		],
 		'serverTemplate' => [
@@ -30,12 +30,12 @@ if ( strpos( wfHostname(), 'test' ) === 0 ) {
 			],
 		],
 		'hostsByName' => [
-			'db01' => 'db01.wikivy.com',
+			'us-central-db01' => 'us-central-db01.wikishack.cc',
 		],
 		'externalLoads' => [
 			'beta' => [
 				/** where the metawikibeta database is located */
-				'db01' => 0,
+				'us-central-db01' => 0,
 			],
 		],
 		'readOnlyBySection' => [
@@ -51,10 +51,10 @@ if ( strpos( wfHostname(), 'test' ) === 0 ) {
 		'sectionsByDB' => $wi->wikiDBClusters,
 		'sectionLoads' => [
 			'DEFAULT' => [
-				'db01' => 0,
+				'us-central-db01' => 0,
 			],
 			'c1' => [
-				'db01' => 0,
+				'us-central-db01' => 0,
 			]
 		],
 		'serverTemplate' => [
@@ -69,12 +69,12 @@ if ( strpos( wfHostname(), 'test' ) === 0 ) {
 			],
 		],
 		'hostsByName' => [
-			'db01' => 'db01.wikivy.com',
+			'us-central-db01' => 'us-central-db01.wikishack.cc',
 		],
 		'externalLoads' => [
 			'echo' => [
 				/** where the metawiki database is located */
-				'db01' => 0,
+				'us-central-db01' => 0,
 			],
 		],
 		'readOnlyBySection' => [

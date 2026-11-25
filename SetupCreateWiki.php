@@ -29,7 +29,7 @@ function insertWiki( MediaWikiServices $services ) {
 
 		$db = wfInitDBConnection();
 
-		$db->selectDomain( 'wvglobal' );
+		$db->selectDomain( 'wsglobal' );
 		$db->newInsertQueryBuilder()
 			->insertInto( 'cw_wikis' )
 			->ignore()
@@ -46,7 +46,7 @@ function insertWiki( MediaWikiServices $services ) {
 				'wiki_locked' => (int)0,
 				'wiki_inactive' => (int)0,
 				'wiki_inactive_exempt' => (int)0,
-				'wiki_url' => 'https://test.wikivy.com', # CHANGE THIS
+				'wiki_url' => 'https://test.wikishack.com', # CHANGE THIS
 			] )
 			->caller( __METHOD__ )
 			->execute();
@@ -61,8 +61,8 @@ function wfLoadConfiguration() {
 	global $wgCreateWikiGlobalWiki, $wgCreateWikiDatabase,
 		   $wgCreateWikiCacheDirectory, $wgConf;
 
-	$wgCreateWikiGlobalWiki = 'wvglobal';
-	$wgCreateWikiDatabase = 'wvglobal';
+	$wgCreateWikiGlobalWiki = 'wsglobal';
+	$wgCreateWikiDatabase = 'wsglobal';
 	$wgCreateWikiCacheDirectory = WV_INSTALL_PATH . '/cache';
 
 	$wi = new WikiInitialize();
@@ -100,7 +100,7 @@ function wfLoadConfiguration() {
 function wfInitDBConnection() {
 	return MediaWikiServices::getInstance()->getDatabaseFactory()->create( 'postgres', [
 		'host' => $GLOBALS['wgDBserver'],
-		'user' => 'wikivy',
+		'user' => 'wikishack',
 		'password' => '' # CHANGE THIS
 	] );
 }

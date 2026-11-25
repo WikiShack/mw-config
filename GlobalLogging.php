@@ -30,7 +30,7 @@ $wmgMonologProcessors = [
 	'web' => [
 		'class' => WebProcessor::class,
 	],
-	'wvconfig' => [
+	'wsconfig' => [
 		'factory' => static function (): Closure {
 			return static function ( array $record ): array {
 				global $wgLBFactoryConf, $wgDBname;

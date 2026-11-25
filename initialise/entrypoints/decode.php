@@ -1,7 +1,7 @@
 <?php
 
 require_once '/srv/mediawiki/config/initialise/WikivyFunctions.php';
-require WikivyFunctions::getMediaWiki( 'includes/WebStart.php' );
+require WikiShackFunctions::getMediaWiki( 'includes/WebStart.php' );
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;

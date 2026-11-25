@@ -41,7 +41,7 @@ wfLoadExtensions([
 	//'WebAuthn',
 	'WikiDiscover',
 	'WikiEditor',
-	'WikivyMagic',
+	'WikiShackMagic',
 	'cldr'
 ]);
 

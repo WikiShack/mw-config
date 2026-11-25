@@ -5,10 +5,10 @@ use MediaWiki\Extension\ConfirmEdit\hCaptcha\HCaptcha;
 use MediaWiki\Extension\ConfirmEdit\Store\CaptchaCacheStore;
 use MediaWiki\FileRepo\ForeignDBViaLBRepo;
 
-$wgHooks['CreateWikiGenerateDatabaseLists'][] = 'WikivyFunctions::onGenerateDatabaseLists';
-$wgHooks['ManageWikiCoreAddFormFields'][] = 'WikivyFunctions::onManageWikiCoreAddFormFields';
-$wgHooks['ManageWikiCoreFormSubmission'][] = 'WikivyFunctions::onManageWikiCoreFormSubmission';
-$wgHooks['MediaWikiServices'][] = 'WikivyFunctions::onMediaWikiServices';
+$wgHooks['CreateWikiGenerateDatabaseLists'][] = 'WikiShackFunctions::onGenerateDatabaseLists';
+$wgHooks['ManageWikiCoreAddFormFields'][] = 'WikiShackFunctions::onManageWikiCoreAddFormFields';
+$wgHooks['ManageWikiCoreFormSubmission'][] = 'WikiShackFunctions::onManageWikiCoreFormSubmission';
+$wgHooks['MediaWikiServices'][] = 'WikiShackFunctions::onMediaWikiServices';
 $wgHooks['BeforePageDisplay'][] = static function ( &$out, &$skin ) {
 	if ( $out->getTitle()->isSpecialPage() ) {
 		$out->setRobotPolicy( 'noindex,nofollow' );
@@ -61,7 +61,7 @@ if ( $wi->isExtensionActive( 'StandardDialogs' ) ) {
 	wfLoadExtension( 'OOJSPlus' );
 }
 
-if ( $wgWikivyCommons && !$cwPrivate ) {
+if ( $wgWikiShackCommons && !$cwPrivate ) {
 	wfLoadExtension( 'GlobalUsage' );
 }
 
@@ -81,7 +81,7 @@ if ( $wi->isExtensionActive( 'Popups' ) ) {
 
 if ( $wi->isExtensionActive( 'SocialProfile' ) ) {
 	require_once "$IP/extensions/SocialProfile/SocialProfile.php";
-	//$wgSocialProfileFileBackend = 'wikivy-swift';
+	//$wgSocialProfileFileBackend = 'wikishack-swift';
 	$wgUserBoardAllowPrivateMessages = false;
 }
 
@@ -109,7 +109,7 @@ if ( $wi->isAnyOfExtensionsActive( 'WikibaseClient', 'WikibaseRepository' ) ) {
 $wgVirtualRestConfig = [
 	'modules' => [
 		'parsoid' => [
-			'url' => 'https://meta.wikivy.com/w/rest.php',
+			'url' => 'https://meta.wikishack.com/w/rest.php',
 			'domain' => $wi->server,
 			'prefix' => $wi->dbname,
 			'forwardCookies' => (bool)$cwPrivate,
@@ -188,7 +188,7 @@ if ( ( $wgMirahezeActionPathsFormat ?? 'default' ) !== 'default' ) {
 // Don't need globals here
 unset( $actions, $articlePath );
 
-$wgAllowedCorsHeaders[] = 'X-Wikivy-Debug';
+$wgAllowedCorsHeaders[] = 'X-WikiShack-Debug';
 
 // Closed Wikis
 if ( $cwClosed ) {
@@ -296,11 +296,11 @@ $wgDataDump = [
 
 // Email
 $wgSMTP = [
-	'host' => 'mail.wikivy.com',
-	'IDHost' => 'wikivy.com',
+	'host' => 'mail.wikishack.com',
+	'IDHost' => 'wikishack.com',
 	'port' => 2587,
-	'username' => 'noreply@wikivy.com',
-	'password' => $wgWikivyEmailPassword,
+	'username' => 'noreply@wikishack.com',
+	'password' => $wgWikiShackEmailPassword,
 	'auth' => true,
 ];
 
@@ -313,13 +313,13 @@ if ( $wmgEnableSharedUploads && $wmgSharedUploadDBname && in_array( $wmgSharedUp
 	if ( !$wmgSharedUploadBaseUrl || $wmgSharedUploadBaseUrl === $wmgSharedUploadDBname ) {
 		$wmgSharedUploadSubdomain = substr( $wmgSharedUploadDBname, 0, -4 );
 
-		$wmgSharedUploadBaseUrl = "{$wmgSharedUploadSubdomain}.wikivy.com";
+		$wmgSharedUploadBaseUrl = "{$wmgSharedUploadSubdomain}.wikishack.com";
 	}
 
 	$wgForeignFileRepos[] = [
 		'class' => ForeignDBViaLBRepo::class,
 		'name' => "shared-{$wmgSharedUploadDBname}",
-		'url' => "https://static.wikivy.com/{$wmgSharedUploadDBname}",
+		'url' => "https://static.wikishack.com/{$wmgSharedUploadDBname}",
 		'hashLevels' => 2,
 		'thumbScriptUrl' => false,
 		'transformVia404' => true,
@@ -334,18 +334,18 @@ if ( $wmgEnableSharedUploads && $wmgSharedUploadDBname && in_array( $wmgSharedUp
 	];
 }
 
-// Miraheze Commons
-if ( $wgDBname !== 'commonswiki' && $wgWikivyCommons && strpos( wfHostname(), 'mwbeta' ) === false ) {
+// WikiShack Commons
+if ( $wgDBname !== 'commonswiki' && $wgWikiShackCommons && strpos( wfHostname(), 'mwbeta' ) === false ) {
 	$wgForeignFileRepos[] = [
 		'class' => ForeignDBViaLBRepo::class,
-		'name' => 'wikivycommons',
-		'url' => 'https://static.wikivy.com/commonswiki',
+		'name' => 'wikishackcommons',
+		'url' => 'https://static.wikishack.com/commonswiki',
 		'hashLevels' => 2,
 		'thumbScriptUrl' => false,
 		'transformVia404' => true,
 		'hasSharedCache' => true,
-		'descBaseUrl' => 'https://commons.wikivy.com/wiki/File:',
-		'scriptDirUrl' => 'https://commons.wikivy.com/w',
+		'descBaseUrl' => 'https://commons.wikishack.com/wiki/File:',
+		'scriptDirUrl' => 'https://commons.wikishack.com/w',
 		'fetchDescription' => true,
 		'descriptionCacheExpiry' => 86400 * 7,
 		'wiki' => 'commonswiki',
@@ -354,17 +354,17 @@ if ( $wgDBname !== 'commonswiki' && $wgWikivyCommons && strpos( wfHostname(), 'm
 	];
 }
 
-if ( $wgDBname !== 'commonswikibeta' && $wgWikivyCommons && strpos( wfHostname(), 'mwbeta' ) !== false ) {
+if ( $wgDBname !== 'commonswikibeta' && $wgWikiShackCommons && strpos( wfHostname(), 'mwbeta' ) !== false ) {
 	$wgForeignFileRepos[] = [
 		'class' => ForeignDBViaLBRepo::class,
-		'name' => 'wikivycommons',
-		'url' => 'https://static.wikivy.com/commonswikibeta',
+		'name' => 'wikishackcommons',
+		'url' => 'https://static.wikishack.com/commonswikibeta',
 		'hashLevels' => 2,
 		'thumbScriptUrl' => false,
 		'transformVia404' => true,
 		'hasSharedCache' => true,
-		'descBaseUrl' => 'https://commons.wikivy.dev/wiki/File:',
-		'scriptDirUrl' => 'https://commons.wikivy.dev/w',
+		'descBaseUrl' => 'https://commons.wikishack.dev/wiki/File:',
+		'scriptDirUrl' => 'https://commons.wikishack.dev/w',
 		'fetchDescription' => true,
 		'descriptionCacheExpiry' => 86400 * 7,
 		'wiki' => 'commonswikibeta',
@@ -397,12 +397,12 @@ if ( $wgWordmark ) {
 
 // $wgUrlShortenerAllowedDomains
 $wgUrlShortenerAllowedDomains = [
-	'(.*\.)?wikivy\.com'
+	'(.*\.)?wikishack\.com'
 ];
 
-if ( preg_match( '/(wikivy)\.dev$/', $wi->server ) ) {
+if ( preg_match( '/(wikishack)\.dev$/', $wi->server ) ) {
 	$wgUrlShortenerAllowedDomains = [
-		'(.*\.)?wikivy\.dev'
+		'(.*\.)?wikishack\.dev'
 	];
 }
 
@@ -430,11 +430,11 @@ if ( $wi->isExtensionActive( 'JsonConfig' ) ) {
 	if ( $wgDBname !== 'commonswiki'
 	) {
 		$wgJsonConfigs['Map.JsonConfig']['remote'] = [
-			'url' => 'https://commons.wikivy.com/w/api.php'
+			'url' => 'https://commons.wikishack.com/w/api.php'
 		];
 
 		$wgJsonConfigs['Tabular.JsonConfig']['remote'] = [
-			'url' => 'https://commons.wikivy.com/w/api.php'
+			'url' => 'https://commons.wikishack.com/w/api.php'
 		];
 	}
 }
@@ -448,14 +448,14 @@ unset( $vectorVersion );
 
 // Licensing variables
 
-$wikivyhost = $wi->isBeta() ? 'wikivy.dev' : 'wikivy.com';
+$wikishackhost = $wi->isBeta() ? 'wikishack.dev' : 'wikishack.com';
 
 /**
  * Default values.
  * We can not set these in LocalSettings.php, to prevent them
  * from causing absolute overrides.
  */
-$wgRightsIcon = "https://meta.$wikivyhost/{$wi->version}/resources/assets/licenses/cc-by-sa.png";
+$wgRightsIcon = "https://meta.$wikishackhost/{$wi->version}/resources/assets/licenses/cc-by-sa.png";
 $wgRightsText = 'Creative Commons Attribution Share Alike';
 $wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
@@ -468,12 +468,12 @@ $wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
  */
 switch ( $wmgWikiLicense ) {
 	case 'arr':
-		$wgRightsIcon = 'https://static.wikivy.com/commonswiki/6/67/License_icon-copyright-88x31.svg';
+		$wgRightsIcon = 'https://static.wikishack.com/commonswiki/6/67/License_icon-copyright-88x31.svg';
 		$wgRightsText = 'All Rights Reserved';
 		$wgRightsUrl = false;
 		break;
 	case 'cc-by':
-		$wgRightsIcon = "https://meta.$wikivyhost/{$wi->version}/resources/assets/licenses/cc-by.png";
+		$wgRightsIcon = "https://meta.$wikishackhost/{$wi->version}/resources/assets/licenses/cc-by.png";
 		$wgRightsText = 'Creative Commons Attribution 4.0 International (CC BY 4.0)';
 		$wgRightsUrl = 'https://creativecommons.org/licenses/by/4.0';
 		break;
@@ -496,7 +496,7 @@ switch ( $wmgWikiLicense ) {
 		$wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/2.0/kr';
 		break;
 	case 'cc-by-sa-nc':
-		$wgRightsIcon = "https://meta.$wikivyhost/{$wi->version}/resources/assets/licenses/cc-by-nc-sa.png";
+		$wgRightsIcon = "https://meta.$wikishackhost/{$wi->version}/resources/assets/licenses/cc-by-nc-sa.png";
 		$wgRightsText = 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)';
 		$wgRightsUrl = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
 		break;
@@ -506,17 +506,17 @@ switch ( $wmgWikiLicense ) {
 		$wgRightsUrl = 'https://creativecommons.org/licenses/by-nc-nd/4.0/';
 		break;
 	case 'cc-pd':
-		$wgRightsIcon = "https://meta.$wikivyhost/{$wi->version}/resources/assets/licenses/cc-0.png";
+		$wgRightsIcon = "https://meta.$wikishackhost/{$wi->version}/resources/assets/licenses/cc-0.png";
 		$wgRightsText = 'CC0 Public Domain';
 		$wgRightsUrl = 'https://creativecommons.org/publicdomain/zero/1.0/';
 		break;
 	case 'gpl-v3':
-		$wgRightsIcon = 'https://static.wikivy.com/commonswiki/d/d8/Gplv3-or-later.png';
+		$wgRightsIcon = 'https://static.wikishack.com/commonswiki/d/d8/Gplv3-or-later.png';
 		$wgRightsText = 'GPLv3';
 		$wgRightsUrl = 'https://www.gnu.org/licenses/gpl-3.0-standalone.html';
 		break;
 	case 'gfdl':
-		$wgRightsIcon = 'https://static.wikivy.com/commonswiki/6/61/Gfdl-logo-tiny.png';
+		$wgRightsIcon = 'https://static.wikishack.com/commonswiki/6/61/Gfdl-logo-tiny.png';
 		$wgRightsText = 'GNU Free Document License 1.3';
 		$wgRightsUrl = 'https://www.gnu.org/licenses/fdl-1.3.en.html';
 		break;
@@ -525,5 +525,5 @@ switch ( $wmgWikiLicense ) {
 }
 
 // Don't need a global here
-unset( $wikivyhost );
+unset( $wikishackhost );
 

@@ -1,10 +1,10 @@
 <?php
 require_once '/srv/mediawiki/config/initialise/WikivyFunctions.php';
 
-$currentDatabase = WikivyFunctions::getCurrentDatabase( true );
+$currentDatabase = WikiShackFunctions::getCurrentDatabase( true );
 
-$primaryDomain = WikivyFunctions::getPrimaryDomain( $currentDatabase );
-$defaultServer = WikivyFunctions::getDefaultServer( $currentDatabase );
+$primaryDomain = WikiShackFunctions::getPrimaryDomain( $currentDatabase );
+$defaultServer = WikiShackFunctions::getDefaultServer( $currentDatabase );
 
 if (
 	$primaryDomain !== $defaultServer &&
@@ -17,4 +17,4 @@ if (
 	exit();
 }
 
-require WikivyFunctions::getMediaWiki( 'thumb_handler.php' );
+require WikiShackFunctions::getMediaWiki( 'thumb_handler.php' );

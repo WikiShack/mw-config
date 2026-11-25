@@ -1,7 +1,7 @@
 <?php
 
 /**
- * LocalSettings.php for Wikivy
+ * LocalSettings.php for WikiShack
  */
 // Don't allow web access.
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -17,8 +17,8 @@ setlocale( LC_ALL, 'en_US.UTF-8' );
 // Show custom database maintenance error page on these clusters.
 $wgDatabaseClustersMaintenance = [];
 
-require_once '/srv/mediawiki/config/initialise/WikivyFunctions.php';
-$wi = new WikivyFunctions();
+require_once '/srv/mediawiki/config/initialise/WikiShackFunctions.php';
+$wi = new WikiShackFunctions();
 
 // Load PrivateSettings (e.g. $wgDBpassword)
 require_once '/srv/mediawiki/config/PrivateSettings.php';
@@ -27,8 +27,8 @@ require_once '/srv/mediawiki/config/PrivateSettings.php';
 require_once '/srv/mediawiki/config/GlobalExtensions.php';
 require_once '/srv/mediawiki/config/GlobalSkins.php';
 
-$wgPasswordSender = 'noreply@wikivy.com';
-$wmgUploadHostname = 'static.wikivy.com';
+$wgPasswordSender = 'noreply@wikishack.com';
+$wmgUploadHostname = 'static.wikishack.com';
 
 $wmgSharedDomainPathPrefix = '';
 
@@ -133,14 +133,14 @@ $wgConf->settings += [
 		'default' => [
 			'spam' => [
 				'files' => [
-					'https://meta.wikivy.com/wiki/MediaWiki:Global_spam_blacklist?action=raw&sb_ver=1',
+					'https://meta.wikishack.com/wiki/MediaWiki:Global_spam_blacklist?action=raw&sb_ver=1',
 				],
 			],
 		],
 		'beta' => [
 			'spam' => [
 				'files' => [
-					'https://meta.wikivy.dev/wiki/MediaWiki:Global_spam_blacklist?action=raw&sb_ver=1',
+					'https://meta.wikishack.dev/wiki/MediaWiki:Global_spam_blacklist?action=raw&sb_ver=1',
 				],
 			],
 		],
@@ -247,15 +247,15 @@ $wgConf->settings += [
 	],
 	'wmgCentralAuthAutoLoginWikis' => [
 		'default' => [
-			'.wikivy.com' => 'metawiki'
+			'.wikishack.com' => 'metawiki'
 		],
 		'beta' => [
-			'.wikivy.dev' => 'metawikibeta',
+			'.wikishack.dev' => 'metawikibeta',
 		],
 	],
 	'wgGlobalRenameDenylist' => [
-		'default' => 'https://meta.wikivy.com/wiki/MediaWiki:Global_rename_blacklist?action=raw',
-		'beta' => 'https://meta.wikivy.dev/wiki/MediaWiki:Global_rename_blacklist?action=raw',
+		'default' => 'https://meta.wikishack.com/wiki/MediaWiki:Global_rename_blacklist?action=raw',
+		'beta' => 'https://meta.wikishack.dev/wiki/MediaWiki:Global_rename_blacklist?action=raw',
 	],
 	'wgGlobalRenameDenylistRegex' => [
 		'default' => true,
@@ -269,13 +269,13 @@ $wgConf->settings += [
 	],
 
 	'wgCentralSelectedBannerDispatcher' => [
-		'default' => 'https://meta.wikivy.com/wiki/Special:BannerLoader',
-		'beta' => 'https://meta.wikivy.dev/wiki/Special:BannerLoader',
+		'default' => 'https://meta.wikishack.com/wiki/Special:BannerLoader',
+		'beta' => 'https://meta.wikishack.dev/wiki/Special:BannerLoader',
 	],
 
 	'wgCentralBannerRecorder' => [
-		'default' => 'https://meta.wikivy.com/wiki/Special:RecordImpression',
-		'beta' => 'https://meta.wikivy.dev/wiki/Special:RecordImpression',
+		'default' => 'https://meta.wikishack.com/wiki/Special:RecordImpression',
+		'beta' => 'https://meta.wikishack.dev/wiki/Special:RecordImpression',
 	],
 
 	'wgCentralDBname' => [
@@ -284,8 +284,8 @@ $wgConf->settings += [
 	],
 
 	'wgCentralHost' => [
-		'default' => 'https://meta.wikivy.com',
-		'beta' => 'https://meta.wikivy.dev',
+		'default' => 'https://meta.wikishack.com',
+		'beta' => 'https://meta.wikishack.dev',
 	],
 
 	'wgNoticeProjects' => [
@@ -421,7 +421,7 @@ $wgConf->settings += [
 	// CreateWiki
 	'wgCreateWikiDisallowedSubdomains' => [
 		'default' => [
-			'(.*)wikivy(.*)',
+			'(.*)wikishack(.*)',
 			'subdomain',
 			'example',
 			'beta(meta)?',
@@ -519,17 +519,17 @@ $wgConf->settings += [
 	'wgCreateWikiCannedResponses' => [
 		'default' => [
 			'Approval reasons' => [
-				'Perfect request' => 'Perfect. Clear purpose, scope, and topic. Please ensure your wiki complies with all aspects of the Content Policy at all times and that it does not deviate from the approved scope or else your wiki may be closed. Thank you for choosing Wikivy!',
-				'Good request' => 'Pretty good. Purpose and description are a bit vague, but there is nonetheless a clear enough purpose, scope, and/or topic here. Please ensure your wiki complies with all aspects of the Content Policy at all times and that it does not deviate from the approved scope or else your wiki will be closed. Thank you for choosing Wikivy!',
+				'Perfect request' => 'Perfect. Clear purpose, scope, and topic. Please ensure your wiki complies with all aspects of the Content Policy at all times and that it does not deviate from the approved scope or else your wiki may be closed. Thank you for choosing WikiShack!',
+				'Good request' => 'Pretty good. Purpose and description are a bit vague, but there is nonetheless a clear enough purpose, scope, and/or topic here. Please ensure your wiki complies with all aspects of the Content Policy at all times and that it does not deviate from the approved scope or else your wiki will be closed. Thank you for choosing WikiShack!',
 				'Okay request' => 'Okay-ish. Description is somewhat vague, but the sitename, URL, and categorization suggest that this is a wiki that would follow the Content Policy made clear by the preceding fields, and it is conditionally approved as such. Please be advised that if your wiki deviates too much from this approval, remedial action can be taken by a Steward, up to and including wiki closure and potential revocation of wiki requesting privileges if necessary. Please ensure your wiki complies with all aspects of Content Policy at all times. Thank you.',
 				'Categorized as private' => 'The purpose and scope of your wiki is clear enough. Please ensure your wiki complies with all aspects of the Content Policy at all times or it may be closed. Please also note that I have categorized your wiki as "Private". Thank you.',
 				'Categorized as nsfw' => 'The purpose and scope of your wiki is clear enough. Please ensure your wiki complies with all aspects of the Content Policy at all times or it may be closed. Please also note that I have categorized your wiki as "NSFW". Thank you.',
 			],
 			'Decline reasons' => [
 				'Needs more details' => 'Can you give us more details on the purpose for, scope of, and topic of your wiki, ideally in at least 2-3 sentences? Please update your request via the "Edit request" tab and add to, but do not replace, your existing description. Thank you.',
-				'Invalid or unclear subdomain' => 'The scope and purpose of your wiki seem clear enough. However, the requested subdomain is either invalid, too generic, conveys a Wikivy affiliation, or suggests that the wiki is an English language or multilingual wiki when it is not. Please change it to something that better reflects your wiki\'s purpose and scope. Thank you.',
+				'Invalid or unclear subdomain' => 'The scope and purpose of your wiki seem clear enough. However, the requested subdomain is either invalid, too generic, conveys a WikiShack affiliation, or suggests that the wiki is an English language or multilingual wiki when it is not. Please change it to something that better reflects your wiki\'s purpose and scope. Thank you.',
 				'Invalid sitename/subdomain (obscene wording)' => 'The scope and purpose of your wiki seem clear enough. However, the requested wiki name or subdomain is in violation of our Content Policy, which prohibits obscene wording in wiki names and subdomains. Please change it to something that is appropriate. Thank you.',
-				'Use Public Test Wiki' => 'Please use Public Test Wiki (https://publictestwiki.com) to test the administrator and bureaucrat tools, as well as Wikivy since the wiki is hosted by us. Please follow all local policies, reverting all tests you perform in the reverse order which you performed them. Local permissions can be requested at TestWiki:Request permissions. Thank you.',
+				'Use Public Test Wiki' => 'Please use Public Test Wiki (https://publictestwiki.com) to test the administrator and bureaucrat tools, as well as WikiShack since the wiki is hosted by us. Please follow all local policies, reverting all tests you perform in the reverse order which you performed them. Local permissions can be requested at TestWiki:Request permissions. Thank you.',
 				'Database exists (wiki active)' => 'A wiki already exists at the selected subdomain. Please visit the local wiki and contribute there. Please reach out to any local bureaucrat to request any permissions if you require them; if bureaucrats are not active on the wiki after a reasonable period of time, please start a local election and ask a Steward to evaluate it at Steward requests. Thank you.',
 				'Database exists (wiki closed)' => 'A wiki already exists at the selected subdomain selected but is closed. Please visit the Requests for reopening wikis page to request to reopen the wiki or ask for help on the Community portal.',
 				'Database exists (wiki already deleted)' => 'A wiki already exists at the selected subdomain but has been deleted in accordance with the Dormancy Policy. I will request a Steward undelete it for you. When it has been undeleted and reopened, please visit the local wiki and ensure you make at least one edit or log action every 45 days. Wikis are only deleted after 6 months of complete inactivity; if you require a Dormancy Policy exemption, you should review the policy and request it once your wiki has at least 40-60 content pages. Thank you.',
@@ -540,17 +540,17 @@ $wgConf->settings += [
 				'Excessive requests' => 'Declining as you have requested an excessive amount of wikis. If you believe you have legitimate need for this amount of wikis, please reply to this request with a 2-3 sentence reasoning on why you need the wikis.',
 				'Vandal request' => 'Declining as this wiki request is product of either vandalism or trolling.',
 				'Content Policy (commercial activity)' => 'Declining per Content Policy provision, "The primary purpose of your wiki cannot be for commercial activity." Thank you for understanding. If in error, please edit this wiki request and articulate a clearer purpose and scope for your wiki that makes it clear how this wiki would not violate this criterion of Content Policy.',
-				'Content Policy (deceive, defraud or mislead)' => 'Declining per Content Policy provision, "Wikivy does not host wikis with the sole purpose of deceiving, defrauding, or misleading people." Thank you for your understanding.',
+				'Content Policy (deceive, defraud or mislead)' => 'Declining per Content Policy provision, "WikiShack does not host wikis with the sole purpose of deceiving, defrauding, or misleading people." Thank you for your understanding.',
 				'Content Policy (duplicate/similar wiki)' => 'Your proposed wiki appears to duplicate, either substantially or entirely, the scope of an existing wiki, which is prohibited by the Content Policy. Please contribute to the existing wiki instead; if you feel that this is in error, please describe in a few sentences how your wiki will not violate this policy. Thank you.',
-				'Content Policy (file sharing service)' => 'Declining per Content Policy provision, "Wikivy does not host wikis whose main purpose is to act as a file sharing service." Thank you for your understanding.',
-				'Content Policy (forks)' => 'Declining per Content Policy provision, "Direct forks of other Wikivy wikis where no attempts at mediations are made are not allowed." Thank you for your understanding.',
-				'Content Policy (illegal US activity)' => 'Declining per Content Policy provision, "Wikivy does not host any content that is illegal in the United States." Thank you for understanding. If you believe this decline reason was used incorrectly, please address this with the declining wiki reviewer on their user talk page first before escalating your concern to Steward requests. Thank you.',
+				'Content Policy (file sharing service)' => 'Declining per Content Policy provision, "WikiShack does not host wikis whose main purpose is to act as a file sharing service." Thank you for your understanding.',
+				'Content Policy (forks)' => 'Declining per Content Policy provision, "Direct forks of other WikiShack wikis where no attempts at mediations are made are not allowed." Thank you for your understanding.',
+				'Content Policy (illegal US activity)' => 'Declining per Content Policy provision, "WikiShack does not host any content that is illegal in the United States." Thank you for understanding. If you believe this decline reason was used incorrectly, please address this with the declining wiki reviewer on their user talk page first before escalating your concern to Steward requests. Thank you.',
 				'Content Policy (makes it difficult for other wikis)' => 'Declining per Content Policy provision, "A wiki must not create problems which make it difficult for other wikis." Thank you for your understanding.',
-				'Content Policy (no anarchy wikis)' => 'Declining per Content Policy provision, "Wikivy does not host wikis that operate on the basis of an anarchy system (i.e. no leadership and no rules)." Thank you for your understanding.',
-				'Content Policy (sexual nature involving minors)' => 'Declining per Content Policy provision, "Wikivy does not host wikis of a sexual nature which involve minors in any way." Thank you for your understanding.',
-				'Content Policy (toxic communities)' => 'Declining per Content Policy provision, "Wikivy does not host wikis where the community has developed in such a way as to be characterised as toxic." Thank you for your understanding.',
-				'Content Policy (unsubstantiated insult)' => 'Declining per Content Policy provision, "Wikivy does not host wikis which spread unsubstantiated insult, hate or rumours against a person or group of people." Thank you for your understanding.',
-				'Content Policy (violence, hatred or harrassment)' => 'Declining per Content Policy provision, "Wikivy does not host wikis that promote violence, hatred, or harassment against a person or group of people." Thank you for your understanding.',
+				'Content Policy (no anarchy wikis)' => 'Declining per Content Policy provision, "WikiShack does not host wikis that operate on the basis of an anarchy system (i.e. no leadership and no rules)." Thank you for your understanding.',
+				'Content Policy (sexual nature involving minors)' => 'Declining per Content Policy provision, "WikiShack does not host wikis of a sexual nature which involve minors in any way." Thank you for your understanding.',
+				'Content Policy (toxic communities)' => 'Declining per Content Policy provision, "WikiShack does not host wikis where the community has developed in such a way as to be characterised as toxic." Thank you for your understanding.',
+				'Content Policy (unsubstantiated insult)' => 'Declining per Content Policy provision, "WikiShack does not host wikis which spread unsubstantiated insult, hate or rumours against a person or group of people." Thank you for your understanding.',
+				'Content Policy (violence, hatred or harrassment)' => 'Declining per Content Policy provision, "WikiShack does not host wikis that promote violence, hatred, or harassment against a person or group of people." Thank you for your understanding.',
 				'Content Policy (Wikimedia-like wikis/forks)' => 'Declining per Content Policy provision, "Direct forks and forks where a substantial amount of content is copied from a Wikimedia project are not allowed." Thank you for your understanding.',
 				'Content Policy (Reception wiki)' => 'Declining per Content Policy provision, "Wikis should not be structured around bullet-point, good/bad commentary." Thank you for your understanding.',
 				/* 'Content Policy (additional restrictions)' => 'Declining per the Content Policy's additional restrictions, which includes the topic of your wiki. Thank you for your understanding.', */
@@ -663,8 +663,8 @@ $wgConf->settings += [
 		'default' => 5,
 	],
 	'wgCreateWikiSubdomain' => [
-		'default' => 'wikivy.com',
-		'beta' => 'wikivy.dev',
+		'default' => 'wikishack.com',
+		'beta' => 'wikishack.dev',
 	],
 	'wgCreateWikiUseClosedWikis' => [
 		'default' => true,
@@ -708,7 +708,7 @@ $wgConf->settings += [
 
 	// CookieWarning
 	'wgCookieWarningMoreUrl' => [
-		'default' => 'https://meta.wikivy.com/wiki/Special:MyLanguage/Privacy_Policy#2._Cookies',
+		'default' => 'https://meta.wikishack.com/wiki/Special:MyLanguage/Privacy_Policy#2._Cookies',
 	],
 	'wgCookieWarningEnabled' => [
 		'default' => true,
@@ -728,10 +728,10 @@ $wgConf->settings += [
 		'default' => false,
 	],
 	'wgDBadminuser' => [
-		'default' => 'wikivy',
+		'default' => 'wikishack',
 	],
 	'wgDBuser' => [
-		'default' => 'wikivy',
+		'default' => 'wikishack',
 	],
 	'wgReadOnly' => [
 		'default' => false,
@@ -854,7 +854,7 @@ $wgConf->settings += [
 		'default' => false,
 	],
 	'wgDiscordNotificationCentralAuthWikiUrl' => [
-		'default' => 'https://meta.wikivy.com/',
+		'default' => 'https://meta.wikishack.com/',
 	],
 	'wgDiscordNotificationIncludeAutocreatedUsers' => [
 		'default' => true,
@@ -1014,11 +1014,11 @@ $wgConf->settings += [
 	// Footers
 	'+wgFooterIcons' => [
 		'default' => [
-			'wikivy' => [
-				'wikivy' => [
-					'src' => 'https://static.wikivy.com/commonswiki/1/15/Powered_by_Wikivy_%28no_box%29.svg',
-					'url' => 'https://meta.wikivy.com/wiki/Special:MyLanguage/Wikivy_Meta',
-					'alt' => 'Hosted by Wikivy',
+			'wikishack' => [
+				'wikishack' => [
+					'src' => 'https://static.wikishack.com/commonswiki/1/15/Powered_by_WikiShack_%28no_box%29.svg',
+					'url' => 'https://meta.wikishack.com/wiki/Special:MyLanguage/WikiShack_Meta',
+					'alt' => 'Hosted by WikiShack',
 				],
 			],
 		],
@@ -1071,7 +1071,7 @@ $wgConf->settings += [
 		'default' => 1000,
 	],
 	'wgQuickInstantCommonsUserAgentInfo' => [
-		'default' => 'https://wikivy.com; tech@wikivy.com',
+		'default' => 'https://wikishack.com; tech@wikishack.com',
 	],
 	'wgMaxImageArea' => [
 		'default' => 10e7,
@@ -1079,10 +1079,10 @@ $wgConf->settings += [
 	'wgMaxAnimatedGifArea' => [
 		'default' => '1.25e7',
 	],
-	'wgWikivyCommons' => [
+	'wgWikiShackCommons' => [
 		'default' => true,
 	],
-	'wgWikivyReportsBlockAlertKeywords' => [
+	'wgWikiShackReportsBlockAlertKeywords' => [
 		'default' => [
 			'underage',
 			'under age',
@@ -1157,14 +1157,14 @@ $wgConf->settings += [
 	'+wgResourceLoaderSources' => [
 		'default' => [
 			'metawiki' => [
-				'apiScript' => '//meta.wikivy.com/w/api.php',
-				'loadScript' => '//meta.wikivy.com/w/load.php',
+				'apiScript' => '//meta.wikishack.com/w/api.php',
+				'loadScript' => '//meta.wikishack.com/w/load.php',
 			],
 		],
 		'beta' => [
 			'metawikibeta' => [
-				'apiScript' => '//meta.wikivy.com/w/api.php',
-				'loadScript' => '//meta.wikivy.com/w/load.php',
+				'apiScript' => '//meta.wikishack.dev/w/api.php',
+				'loadScript' => '//meta.wikishack.dev/w/load.php',
 			],
 		],
 	],
@@ -1174,7 +1174,7 @@ $wgConf->settings += [
 
 	// GlobalPreferences
 	'wgGlobalPreferencesDB' => [
-		'default' => 'wvglobal',
+		'default' => 'wsglobal',
 		'beta' => 'betaglobal',
 	],
 
@@ -1188,8 +1188,8 @@ $wgConf->settings += [
 
 	// GlobalUserPage
 	'wgGlobalUserPageAPIUrl' => [
-		'default' => 'https://login.wikivy.com/w/api.php',
-		'beta' => 'https://login.wikivy.dev/w/api.php',
+		'default' => 'https://login.wikishack.com/w/api.php',
+		'beta' => 'https://login.wikishack.dev/w/api.php',
 	],
 	'wgGlobalUserPageDBname' => [
 		'default' => 'loginwiki',
@@ -1259,7 +1259,7 @@ $wgConf->settings += [
 	'wgExtraLanguageNames' => [
 		'default' => [
 			// Prevent mh from being treated as an interlanguage link (T11615)
-			'wv' => '',
+			'ws' => '',
 		]
 	],
 
@@ -1294,10 +1294,10 @@ $wgConf->settings += [
 				'dbname' => '$2wiki',
 				'baseTransOnly' => true,
 			],
-			'wikivy' => [
-				/** Wikivy */
-				'interwiki' => 'wv',
-				'url' => 'https://$2.wikivy.com/wiki/$1',
+			'wikishack' => [
+				/** WikiShack */
+				'interwiki' => 'ws',
+				'url' => 'https://$2.wikishack.com/wiki/$1',
 				'dbname' => '$2wiki',
 				'baseTransOnly' => true,
 			],
@@ -1400,7 +1400,7 @@ $wgConf->settings += [
 		'default' => false,
 	],
 	'wgEmergencyContact' => [
-		'default' => 'noreply@wikivy.com',
+		'default' => 'noreply@wikishack.com',
 	],
 	'wgAllowHTMLEmail' => [
 		'default' => true,
@@ -1456,7 +1456,7 @@ $wgConf->settings += [
 		],
 	],
 	'wgManageWikiHelpUrl' => [
-		'default' => '//meta.wikivy.com/wiki/Special:MyLanguage/ManageWiki',
+		'default' => '//meta.wikishack.com/wiki/Special:MyLanguage/ManageWiki',
 	],
 	'wgManageWikiModulesEnabled' => [
 		'default' => [
@@ -1975,14 +1975,14 @@ $wgConf->settings += [
 	],
 	'wgCrossSiteAJAXdomains' => [
 		'default' => [
-			'*.wikivy.com',
+			'*.wikishack.com',
 		],
 		'beta' => [
-			'*.wikivy.dev',
+			'*.wikishack.dev',
 		],
 		'private' => [],
 		'wikicreatorswiki' => [
-			'meta.wikivy.com',
+			'meta.wikishack.com',
 		],
 	],
 	'wgWhitelistRead' => [
@@ -2228,19 +2228,19 @@ $wgConf->settings += [
 		],
 	],
 	'wgRemovePIIAutoPrefix' => [
-		'default' => 'WikivyGDPR_',
+		'default' => 'WikiShackGDPR_',
 	],
 	'wgRemovePIIDPAValidationEndpoint' => [
-		'default' => 'https://reports.wikivy.com/api/dpa/{dpa_id}/{username}',
+		'default' => 'https://reports.wikishack.com/api/dpa/{dpa_id}/{username}',
 	],
 	'wgRemovePIIHashPrefixOptions' => [
 		'default' => [
-			'Trust and Safety' => 'WikivyGDPR_',
+			'Trust and Safety' => 'WikiShackGDPR_',
 			'Stewards' => 'Vanished user ',
 		],
 	],
 	'wgRemovePIIHashPrefix' => [
-		'default' => 'WikivyGDPR_',
+		'default' => 'WikiShackGDPR_',
 	],
 
 	// RequestCustomDomain
@@ -2250,13 +2250,13 @@ $wgConf->settings += [
 	],
 	'wgRequestCustomDomainDisallowedDomains' => [
 		'default' => [
-			'wikivy.com',
-			'wikivy.wiki',
+			'wikishack.com',
+			'wikishack.wiki',
 		],
 	],
 	'wgRequestCustomDomainSubdomain' => [
-		'default' => 'wikivy.com',
-		'beta' => 'wikivy.dev',
+		'default' => 'wikishack.com',
+		'beta' => 'wikishack.dev',
 	],
 	'wgRequestCustomDomainUsersNotifiedOnAllRequests' => [
 		'default' => [
@@ -2399,7 +2399,7 @@ $wgConf->settings += [
 		'default' => '/favicon.ico',
 	],
 	'wgLogo' => [
-		'default' => "https://$wmgUploadHostname/metawiki/c/c9/Wikivy_Logo.svg",
+		'default' => "https://$wmgUploadHostname/metawiki/c/c9/WikiShack_Logo.svg",
 	],
 	'wgIcon' => [
 		'default' => false,
@@ -2422,20 +2422,20 @@ $wgConf->settings += [
 		'default' => [
 			'audio' => [
 				'<^(?:https:)?//upload\\.wikimedia\\.org/wikipedia/commons/>',
-				'<^(?:https:)?//static\\.wikivy\\.com/>',
-				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikivy\\.com/w/img_auth\\.php/>',
+				'<^(?:https:)?//static\\.wikishack\\.com/>',
+				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikishack\\.com/w/img_auth\\.php/>',
 				'<^(?:https:)?//' . preg_quote( $wi->server ) . '/w/img_auth\\.php/>',
 			],
 			'image' => [
 				'<^(?:https:)?//upload\\.wikimedia\\.org/wikipedia/commons/>',
-				'<^(?:https:)?//static\\.wikivy\\.com/>',
-				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikivy\\.com/w/img_auth\\.php/>',
+				'<^(?:https:)?//static\\.wikishack\\.com/>',
+				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikishack\\.com/w/img_auth\\.php/>',
 				'<^(?:https:)?//' . preg_quote( $wi->server ) . '/w/img_auth\\.php/>',
 			],
 			'svg' => [
 				'<^(?:https:)?//upload\\.wikimedia\\.org/wikipedia/commons/[^?#]*\\.svg(?:[?#]|$)>',
-				'<^(?:https:)?//static\\.wikivy\\.com/>',
-				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikivy\\.com/w/img_auth\\.php/>',
+				'<^(?:https:)?//static\\.wikishack\\.com/>',
+				'<^(?:https:)?//[a-zA-Z0-9\\-]\\.wikishack\\.com/w/img_auth\\.php/>',
 				'<^(?:https:)?//' . preg_quote( $wi->server ) . '/w/img_auth\\.php/[^?#]*\\.svg(?:[?#]|$)>',
 			],
 			'font' => [],
@@ -2576,7 +2576,6 @@ $wgConf->settings += [
 	],
 	'wgULSIMEEnabled' => [
 		'default' => true,
-		'gratispaideiawiki' => false,
 	],
 	'wgULSWebfontsEnabled' => [
 		'default' => true,
@@ -2789,7 +2788,7 @@ $wgConf->settings += [
 // ManageWiki settings
 require_once __DIR__ . '/ManageWikiExtensions.php';
 
-$globals = WikivyFunctions::getConfigGlobals();
+$globals = WikiShackFunctions::getConfigGlobals();
 
 // phpcs:ignore MediaWiki.Usage.ForbiddenFunctions.extract
 extract($globals);
@@ -2820,10 +2819,10 @@ $wgExtensionMessagesFiles['SocialProfileNamespaces'] = $IP . '/extensions/Social
 $wgExtensionMessagesFiles['AvatarMagic'] = $IP . '/extensions/SocialProfile/UserProfile/includes/avatar/Avatar.i18n.magic.php';
 
 $wgLocalisationCacheConf['storeClass'] = LCStoreStaticArray::class;
-$wgLocalisationCacheConf['storeDirectory'] = '/srv/mediawiki/cache/' . $wi->version . '/l10n/' .$wgDBname;
+$wgLocalisationCacheConf['storeDirectory'] = '/srv/mediawiki/cache/' . $wi->version . '/l10n';
 $wgLocalisationCacheConf['manualRecache'] = true;
 
-if ( !file_exists( '/srv/mediawiki/cache/' . $wi->version . '/l10n/' . $wgDBname .'/en.l10n.php' ) ) {
+if ( !file_exists( '/srv/mediawiki/cache/' . $wi->version . '/l10n/en.l10n.php' ) ) {
 	$wgLocalisationCacheConf['manualRecache'] = false;
 }
 
@@ -2834,7 +2833,7 @@ require_once '/srv/mediawiki/config/GlobalCache.php';
 
 if ( $wgUseQuickInstantCommons ) {
 	$wgForeignFileRepos[] = [
-		'class' => Wikivy\WikivyMagic\ForeignAPIRepoWithFixedUA::class,
+		'class' => WikiShack\WikiShackMagic\ForeignAPIRepoWithFixedUA::class,
 		'name' => 'wikimediacommons',
 		'apibase' => 'https://commons.wikimedia.org/w/api.php',
 		'url' => 'https://upload.wikimedia.org/wikipedia/commons',

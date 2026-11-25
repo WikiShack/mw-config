@@ -37,8 +37,8 @@ if ( !in_array( $_SERVER['REMOTE_ADDR'], [ '127.0.0.1', '0:0:0:0:0:0:0:1', '::1'
 define( 'MEDIAWIKI_JOB_RUNNER', 1 );
 define( 'MW_DB', isset( $_GET['wiki'] ) ? $_GET['wiki'] : '' );
 
-require_once __DIR__ . '/../initialise/WikivyFunctions.php';
-require WikivyFunctions::getMediaWiki( 'includes/WebStart.php' );
+require_once __DIR__.'/../initialise/WikiShackFunctions.php';
+require WikiShackFunctions::getMediaWiki( 'includes/WebStart.php' );
 
 // fatals but not random I/O warnings
 error_reporting( E_ERROR );

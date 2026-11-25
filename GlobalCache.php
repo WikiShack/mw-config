@@ -16,7 +16,7 @@ $wgWikivyMagicMemcachedServers = [
 
 $wgObjectCaches['redis'] = [
 	'class' => RedisBagOStuff::class,
-	'servers' => [ 'mwtask01.wikivy.com:6379' ],
+	'servers' => [ 'us-central-mwtask01.wikishack.cc:6379' ],
 	'password' => $wmgRedisPassword,
 	'loggroup' => 'redis',
 	'reportDupes' => false,
@@ -25,7 +25,7 @@ $wgObjectCaches['redis'] = [
 
 $wgObjectCaches['redis-session'] = [
 	'class' => RedisBagOStuff::class,
-	'servers' => [ 'mwtask01.wikivy.com:6379' ],
+	'servers' => [ 'us-central-mwtask01.wikishack.cc:6379' ],
 	'password' => $wmgRedisPassword,
 	'loggroup' => 'redis',
 	'reportDupes' => false,
@@ -78,7 +78,7 @@ $wgCdnMatchParameterOrder = false;
 
 $wgJobTypeConf['default'] = [
 	'class' => JobQueueRedis::class,
-	'redisServer' => 'mwtask01.wikivy.com:6379',
+	'redisServer' => 'us-central-mwtask01.wikishack.cc:6379',
 	'redisConfig' => [
 		'connectTimeout' => 2,
 		'password' => $wmgRedisPassword,
